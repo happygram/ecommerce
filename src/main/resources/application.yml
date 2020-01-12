@@ -11,6 +11,11 @@ spring:
     url: jdbc:h2:mem:ecommerce
     username: root
     password: 1234
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
 
 ---
 

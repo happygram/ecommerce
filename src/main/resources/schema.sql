@@ -1,4 +1,4 @@
-CREATE TABLE category (
+CREATE TABLE `category` (
   id int(11) NOT NULL AUTO_INCREMENT,
   id_parent int(11) NOT NULL DEFAULT '0',
   title varchar(200) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE category (
   update_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
-CREATE TABLE product (
+CREATE TABLE `product` (
   id varchar(20) NOT NULL,
   name varchar(500) NOT NULL,
   price int(10) unsigned NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE product (
   update_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
-CREATE TABLE users (
+CREATE TABLE `users` (
   username varchar(50) NOT NULL,
   password varchar(500) NOT NULL,
   enabled tinyint(4) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE users (
   update_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (username)
 );
-CREATE TABLE authorities (
+CREATE TABLE `authorities` (
   username varchar(50) NOT NULL,
   authority varchar(50) NOT NULL,
   create_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -34,7 +34,7 @@ CREATE TABLE authorities (
   PRIMARY KEY (username,authority),
   FOREIGN KEY (username) REFERENCES users (username)
 );
-CREATE TABLE basket (
+CREATE TABLE `basket` (
   username varchar(50) NOT NULL,
   product_id varchar(20) NOT NULL,
   count int(10) unsigned NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE basket (
   FOREIGN KEY (product_id) REFERENCES product (id),
   FOREIGN KEY (username) REFERENCES users (username)
 );
-CREATE TABLE board (
+CREATE TABLE `board` (
   id varchar(20) NOT NULL,
   username varchar(50) NOT NULL,
   type varchar(20) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE board (
   PRIMARY KEY (id),
   FOREIGN KEY (username) REFERENCES users (username)
 );
-CREATE TABLE order (
+CREATE TABLE `order` (
   id varchar(20) NOT NULL,
   username varchar(50) NOT NULL,
   product_id varchar(20) NOT NULL,
