@@ -47,5 +47,4 @@ public class Category {
         this.icon = icon;
         this.description = description;
     }
-
 }
