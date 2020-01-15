@@ -1,5 +1,6 @@
 package happygram.ecommerce.jpa.domain;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -24,10 +25,6 @@ public class CategoryJpaTest {
     void injectedComponentsAreNotNull(){
       List<Category> menuList = categoryRepository.findAll();
 
-      menuList.forEach(category -> {
-        System.out.println(category);
-      });
-
       // Parent
       List<Category> parentMenuList = menuList.stream()
         .filter(category -> category.getIdParent() == CategoryConstant.PARENT_ROOT)
@@ -40,10 +37,25 @@ public class CategoryJpaTest {
         .collect(Collectors.groupingBy(Category::getIdParent))
         ;
 
-      for(Long key : childMenuMap.keySet()) {
-        System.out.println(key);
-        System.out.println(childMenuMap.get(key));
+      // TreeMenu
+      Map<Category, List<Category>> menuMap = new HashMap<>();
+      for(Category parent : parentMenuList){
+        Long id = parent.getId();
+        List<Category> child = childMenuMap.get(id);
+        menuMap.put(parent, child);
       }
+      Map<Category, List<Category>> sortedMenuMap = 
+        menuMap.entrySet().stream()
+        .sorted((e1, e2)-> e1.getKey().getId().compareTo(e2.getKey().getId()))
+        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue, HashMap::new));
+
+      System.out.println("===============================================================");
+      for(Category key : sortedMenuMap.keySet()) {
+        System.out.println(key);
+        System.out.println(sortedMenuMap.get(key));
+      }
+      System.out.println("===============================================================");
+      
     }
 
 }
