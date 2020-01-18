@@ -5,11 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class WebController {
+@RequestMapping("/product")
+public class ProductController {
 
-   @RequestMapping(value = "/")
-   public String main(Model model) {
-      model.addAttribute("template", "fragments/content/main");
+   @RequestMapping(value = "/view/detail")
+   public String product(Model model) {
+      model.addAttribute("template", "fragments/content/product");
       return "index";
    }
 
