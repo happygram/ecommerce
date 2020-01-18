@@ -1,6 +1,7 @@
 package happygram.ecommerce.service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -43,7 +44,7 @@ public class CategoryService {
         Map<Category, List<Category>> sortedMenuMap = 
             menuMap.entrySet().stream()
             .sorted((e1, e2)-> e1.getKey().getId().compareTo(e2.getKey().getId()))
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue, HashMap::new));
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
         return sortedMenuMap;
     }
