@@ -31,7 +31,6 @@ public class GlobalControllerAdvice {
             )
         ){
             Map<Category, List<Category>> categoryList = categoryService.getCategory();
-            System.out.println(categoryList);
             model.addAttribute("categories", categoryList);
         }
     }
