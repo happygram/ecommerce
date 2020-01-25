@@ -41,7 +41,7 @@ INSERT INTO category
 (id, id_parent, title, icon, description, create_timestamp, update_timestamp)
 VALUES(303, 3, '가방', 'far fa-circle', '가방', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
----- category ----
+---- product ----
 -- 티셔츠
 INSERT INTO product
 (name, price, description, image_url, color, size, category_id, discount, create_timestamp, update_timestamp)
