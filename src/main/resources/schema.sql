@@ -9,14 +9,19 @@ CREATE TABLE `category` (
   PRIMARY KEY (id)
 );
 CREATE TABLE `product` (
-  id varchar(20) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(500) NOT NULL,
   price int(10) unsigned NOT NULL,
   description varchar(2000) NOT NULL,
   image_url varchar(200) NOT NULL,
+  color varchar(200) NOT NULL,
+  size varchar(200) NOT NULL,
+  discount int(11) NOT NULL,
+  category_id int(11) NOT NULL,
   create_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   update_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  FOREIGN KEY (category_id) REFERENCES category (id)
 );
 CREATE TABLE `users` (
   username varchar(50) NOT NULL,
@@ -36,7 +41,7 @@ CREATE TABLE `authorities` (
 );
 CREATE TABLE `basket` (
   username varchar(50) NOT NULL,
-  product_id varchar(20) NOT NULL,
+  product_id int(11) NOT NULL,
   count int(10) unsigned NOT NULL,
   create_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   update_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -57,7 +62,7 @@ CREATE TABLE `board` (
 CREATE TABLE `order` (
   id varchar(20) NOT NULL,
   username varchar(50) NOT NULL,
-  product_id varchar(20) NOT NULL,
+  product_id int(11) NOT NULL,
   status enum('ready','delivery','complete') NOT NULL,
   create_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   update_timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

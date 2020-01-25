@@ -23,7 +23,7 @@
           </a>
           <ul class="nav nav-treeview" th:each="child : ${category.value}">
             <li class="nav-item">
-              <a th:href="@{/product/view/list}" class="nav-link">
+              <a th:href="@{'/product/view/list/' + ${child.id}}" class="nav-link">
                 <i class="nav-icon" th:classappend="${child.icon}"></i>
                 <p th:text="${child.title}"></p>
               </a>
