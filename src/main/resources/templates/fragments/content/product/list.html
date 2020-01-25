@@ -17,63 +17,37 @@
            </div><!-- /.container-fluid -->
         </section>
         <div class="row">
-            <!-- Weekly Best 1 -->
-            <div class="col-md-4">
+            <div class="col-md-4" th:each="product : ${productList}">
                 <div class="card card-outline">
-                <div class="card-body">
-                    <div class="text-center">
-                    <a th:href="@{/product/view/detail}">
-                        <img class="img-fluid" th:src="@{/static/images/clothing-2.png}" alt="Product picture">
-                    </a>
+                    <div class="card-body">
+                        <!-- image -->
+                        <div class="text-center">
+                            <a th:href="@{/product/view/detail}">
+                                <img class="img-fluid" th:src="@{'/static/' + ${product.imageUrl}}" alt="Product picture">
+                            </a>
+                        </div>
+                        <!-- main -->
+                        <a th:href="@{/product/view/detail}">
+                            <h3 class="text-dark profile-username text-center" th:text="${product.name}"></h3>
+                            <p class="text-muted text-center" th:text="${product.size}"></p>
+                            <p class="text-dark text-center" th:text="${product.price}"></p>
+                        </a>
+                        <!-- sub -->
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <i class="fas fa-reply"></i> <b>Review</b> <a class="float-right">1,322</a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-star"></i> <b>Star</b> <a class="float-right">2,549</a>
+                            </li>
+                        </ul>
+                        <!-- badge -->
+                        <span class="right badge badge-danger">주문 폭주</span>
+                        <span class="right badge badge-warning">한정 수량</span>
                     </div>
-                    <a th:href="@{/product/view/detail}">
-                    <h3 class="text-dark profile-username text-center">Color T-shirts</h3>
-                    <p class="text-muted text-center">[90-105]</p>
-                    <p class="text-dark text-center">19,800원</p>
-                    </a>
-                    
-                    <ul class="list-group list-group-unbordered mb-3">
-                    <li class="list-group-item">
-                        <i class="fas fa-reply"></i> <b>Review</b> <a class="float-right">1,322</a>
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fas fa-star"></i> <b>Star</b> <a class="float-right">2,549</a>
-                    </li>
-                    </ul>
-
-                    <span class="right badge badge-danger">주문 폭주</span>
-                    <span class="right badge badge-warning">한정 수량</span>
-                </div>
-                </div>
-            </div>
-            <!-- Weekly Best 2 -->
-            <div class="col-md-4">
-                <div class="card card-outline">
-                <div class="card-body">
-                    <div class="text-center">
-                    <a th:href="@{/product/view/detail}">
-                        <img class="img-fluid" th:src="@{/static/images/pants-2.png}" alt="Product picture">
-                    </a>
-                    </div>
-                    <a th:href="@{/product/view/detail}">
-                    <h3 class="text-dark profile-username text-center">Blue Jeans</h3>
-                    <p class="text-muted text-center">[28-34]</p>
-                    <p class="text-dark text-center">39,800원</p>
-                    </a>
-                    
-                    <ul class="list-group list-group-unbordered mb-3">
-                    <li class="list-group-item">
-                        <i class="fas fa-reply"></i> <b>Review</b> <a class="float-right">890</a>
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fas fa-star"></i> <b>Star</b> <a class="float-right">1,423</a>
-                    </li>
-                    </ul>
-
-                    <span class="right badge badge-danger">주문 폭주</span>
-                </div>
                 </div>
             </div>
         </div>
+
     </section>
 </div>
