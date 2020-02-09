@@ -50,4 +50,4 @@ VALUES('Color T-shirts', 29800, '남녀 공용으로 누구나 입을 수 있는
 -- 청바지
 INSERT INTO product
 (name, price, description, image_url, color, size, category_id, discount, create_timestamp, update_timestamp)
-VALUES('Blue Jeans', 39800, '일자 청바지입니다.', '/images/pants-2.png', 'Blue,Black', '28,29,30,31,32,33,34', 103, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+VALUES('Blue Jeans', 39800, '일자 청바지입니다.', '/images/pants-2.png', 'Blue,Black', '28,29,30,31,32,33,34', 103, 10, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
