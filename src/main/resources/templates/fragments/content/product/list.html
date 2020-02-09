@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <!-- image -->
                         <div class="text-center">
-                            <a th:href="@{/product/view/detail}">
+                            <a th:href="@{'/product/view/detail/' + ${product.id}}">
                                 <img class="img-fluid" th:src="@{'/static/' + ${product.imageUrl}}" alt="Product picture">
                             </a>
                         </div>

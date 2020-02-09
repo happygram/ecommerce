@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import happygram.ecommerce.dto.ProductDto;
 import happygram.ecommerce.jpa.domain.Product;
 import happygram.ecommerce.service.ProductService;
 
@@ -21,8 +22,14 @@ public class ProductController {
    /**
     * 상품 상세 조회
     */
-   @RequestMapping(value = "/view/detail")
-   public String viewProductDetail(Model model) {
+   @RequestMapping(value = "/view/detail/{id}")
+   public String viewProductDetail(@PathVariable Long id, Model model) {
+
+      // data
+      ProductDto productDto = productService.getProduct(id);
+      model.addAttribute("product", productDto);
+
+      // view
       model.addAttribute("template", "fragments/content/product/detail");
       return "index";
    }
